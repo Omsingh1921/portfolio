@@ -20,6 +20,12 @@
   border-radius: var(--radius-xl);
   padding: 2.5rem 2.5rem;
   box-shadow: var(--shadow-card);
+  transition: border-color var(--transition-interaction), box-shadow var(--transition-interaction);
+}
+
+.contact-main-card:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-interactive-card);
 }
 
 /* Primary Email Block */
@@ -44,6 +50,12 @@
   background-color: var(--accent-primary-dim);
   color: var(--accent-primary);
   flex-shrink: 0;
+  transition: transform var(--transition-interaction), box-shadow var(--transition-interaction);
+}
+
+.contact-primary-channel:hover .contact-channel-icon {
+  transform: scale(1.08);
+  box-shadow: 0 0 16px var(--accent-primary-dim);
 }
 
 .contact-channel-info {
@@ -67,11 +79,12 @@
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   font-weight: 700;
   color: var(--text-primary);
-  transition: color var(--transition-fast);
+  transition: color var(--transition-interaction), text-shadow var(--transition-interaction);
 }
 
 .contact-channel-value:hover {
   color: var(--accent-primary);
+  text-shadow: 0 0 12px var(--accent-primary-dim);
 }
 
 .contact-actions {
@@ -95,11 +108,14 @@
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  transition: border-color var(--transition-fast);
+  transition: transform var(--transition-interaction), border-color var(--transition-interaction), background-color var(--transition-interaction), box-shadow var(--transition-interaction);
 }
 
 .contact-detail-item:hover {
-  border-color: var(--border-medium);
+  transform: var(--hover-lift-sm);
+  border-color: var(--border-accent);
+  background-color: var(--bg-surface-hover);
+  box-shadow: var(--shadow-interactive-hover);
 }
 
 .detail-icon {
@@ -113,6 +129,12 @@
   border: 1px solid var(--border-subtle);
   color: var(--accent-primary);
   flex-shrink: 0;
+  transition: transform var(--transition-interaction), box-shadow var(--transition-interaction);
+}
+
+.contact-detail-item:hover .detail-icon {
+  transform: scale(1.08) translateY(-1px);
+  box-shadow: 0 0 12px var(--accent-primary-dim);
 }
 
 .detail-meta {
@@ -141,11 +163,12 @@
 }
 
 .detail-value.link {
-  transition: color var(--transition-fast);
+  transition: color var(--transition-interaction), text-shadow var(--transition-interaction);
 }
 
 .detail-value.link:hover {
   color: var(--accent-primary);
+  text-shadow: 0 0 10px var(--accent-primary-dim);
 }
 
 /* --------------------------------------------------------------------------

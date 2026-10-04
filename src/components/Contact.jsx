@@ -21,7 +21,7 @@ export default function Contact() {
             <span className="section-label-text">GET IN TOUCH</span>
           </div>
 
-          <h2 className="section-heading">Let's build something meaningful.</h2>
+          <h2 className="section-heading">Let's build something useful.</h2>
           <p className="section-subheading">
             I'm actively seeking software engineering and Java backend developer opportunities. Feel free to connect directly.
           </p>

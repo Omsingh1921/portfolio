@@ -1,0 +1,93 @@
+@import './InfiniteMarquee.css';
+
+/* ==========================================================================
+   Dashboard Single-Direction Marquee Styles
+   Confined strictly to the SalesTracker Dashboard Showcase container
+   ========================================================================== */
+
+.dashboard-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  padding: 2rem 0;
+  overflow: hidden;
+  background-color: var(--bg-surface);
+  user-select: none;
+}
+
+/* Edge Vignette Fades across the full-screen viewport */
+.dash-marquee-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(40px, 8vw, 150px);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.dash-marquee-fade.left {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-surface) 0%, rgba(8, 11, 18, 0) 100%);
+}
+
+.dash-marquee-fade.right {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-surface) 0%, rgba(8, 11, 18, 0) 100%);
+}
+
+.dash-marquee-track-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.dash-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Optimize card size inside dashboard viewport */
+.dashboard-marquee-wrapper .project-marquee-card {
+  flex: 0 0 380px;
+  width: 380px;
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.45);
+}
+
+.dashboard-marquee-wrapper .project-marquee-card:hover {
+  transform: scale(1.04) translateY(-3px) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .dashboard-marquee-wrapper .project-marquee-card {
+    flex: 0 0 320px;
+    width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-marquee-wrapper {
+    padding: 1rem 0;
+  }
+
+  .dashboard-marquee-wrapper .project-marquee-card {
+    flex: 0 0 280px;
+    width: 280px;
+  }
+
+  .dash-marquee-fade {
+    width: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-marquee-wrapper .project-marquee-card {
+    flex: 0 0 250px;
+    width: 250px;
+  }
+}

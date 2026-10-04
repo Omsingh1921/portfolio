@@ -48,7 +48,7 @@
   font-weight: 700;
   color: var(--text-primary);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: color var(--transition-interaction), text-shadow var(--transition-interaction);
 }
 
 .navbar-brand-name {
@@ -60,10 +60,16 @@
   font-size: 1.2rem;
   line-height: 1;
   margin-left: 1px;
+  transition: text-shadow var(--transition-interaction);
 }
 
 .navbar-brand:hover {
   color: var(--accent-primary);
+  text-shadow: 0 0 12px var(--accent-primary-dim);
+}
+
+.navbar-brand:hover .navbar-brand-dot {
+  text-shadow: 0 0 10px var(--accent-primary);
 }
 
 /* --------------------------------------------------------------------------
@@ -89,11 +95,12 @@
   font-weight: 500;
   padding: 0.35rem 0;
   position: relative;
-  transition: color var(--transition-fast);
+  transition: color var(--transition-interaction), text-shadow var(--transition-interaction);
 }
 
 .navbar-link:hover {
   color: var(--text-primary);
+  text-shadow: 0 0 14px var(--accent-primary-dim);
 }
 
 .navbar-link.active {
@@ -110,10 +117,14 @@
   height: 2px;
   background-color: var(--accent-primary);
   border-radius: var(--radius-full);
-  transition: width var(--transition-fast);
+  transition: width var(--transition-interaction), box-shadow var(--transition-interaction);
 }
 
-.navbar-link:hover::after,
+.navbar-link:hover::after {
+  width: 100%;
+  box-shadow: 0 0 8px var(--accent-primary);
+}
+
 .navbar-link.active::after {
   width: 100%;
 }
@@ -125,13 +136,14 @@
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
+  margin-left: 1.75rem;
 }
 
 .navbar-actions-group {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1rem;
 }
 
 .navbar-resume-btn {
@@ -143,10 +155,21 @@
   padding: 0 1rem;
   height: 38px;
   box-shadow: 0 2px 8px var(--accent-primary-dim);
+  transition: transform var(--transition-interaction), background-color var(--transition-interaction), box-shadow var(--transition-interaction), color var(--transition-interaction);
+}
+
+.navbar-resume-btn:hover {
+  transform: var(--hover-lift-sm);
+  background-color: var(--accent-primary-hover);
+  box-shadow: var(--shadow-button-primary-hover);
+}
+
+.navbar-resume-btn:active {
+  transform: var(--hover-pressed);
 }
 
 .resume-icon {
-  transition: transform var(--transition-fast);
+  transition: transform var(--transition-interaction);
 }
 
 .navbar-resume-btn:hover .resume-icon {

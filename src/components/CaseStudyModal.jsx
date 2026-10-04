@@ -371,11 +371,11 @@ export default function CaseStudyModal({
 
                   {/* Module Filter Pills */}
                   <div className="module-filter-pills" role="toolbar" aria-label="Filter by module">
-                    {['ALL', 'Dashboard', 'Auth', 'Leads', 'Deals', 'Invoicing', 'Reports'].map((filter) => (
+                    {['ALL', ...Array.from(new Set(project.images.map((img) => img.tag || img.module))).filter(Boolean)].map((filter) => (
                       <button
                         key={filter}
                         type="button"
-                        className={`filter-pill ${selectedModuleFilter === filter ? 'active' : ''}`}
+                        className={`filter-pill ${selectedModuleFilter.toLowerCase() === filter.toLowerCase() ? 'active' : ''}`}
                         onClick={() => setSelectedModuleFilter(filter)}
                       >
                         {filter}
@@ -469,76 +469,84 @@ export default function CaseStudyModal({
               </div>
 
               <div className="roles-showcase-grid">
-                {caseStudy.roles?.map((role) => (
-                  <div key={role.id} className="role-card">
-                    <div className="role-card-header">
-                      <div>
-                        <span className="role-level-badge">{role.level}</span>
-                        <h4 className="role-name">{role.name}</h4>
-                        <span className="role-title-sub">{role.title}</span>
+                {caseStudy.roles?.map((role) => {
+                  const roleScreenshots = project.images.filter((img) =>
+                    role.screenshotModules
+                      ? role.screenshotModules.some(
+                          (m) =>
+                            m.toLowerCase() === (img.tag || '').toLowerCase() ||
+                            m.toLowerCase() === (img.module || '').toLowerCase()
+                        )
+                      : img.roles?.includes(role.name)
+                  )
+
+                  return (
+                    <div key={role.id} className="role-card">
+                      <div className="role-card-header">
+                        <div>
+                          <span className="role-level-badge">{role.level}</span>
+                          <h4 className="role-name">{role.name}</h4>
+                          <span className="role-title-sub">{role.title}</span>
+                        </div>
+                        <span className="role-scope-badge">{role.scope}</span>
                       </div>
-                      <span className="role-scope-badge">{role.scope}</span>
-                    </div>
 
-                    <p className="role-desc">{role.description}</p>
+                      <p className="role-desc">{role.description}</p>
 
-                    {/* Permissions list */}
-                    <div className="role-permissions-section">
-                      <span className="role-section-label">Granted Permissions:</span>
-                      <div className="role-perms-pills">
-                        {role.permissions.map((p, pIdx) => (
-                          <span key={pIdx} className="role-perm-chip">
-                            {p}
-                          </span>
-                        ))}
+                      {/* Permissions list */}
+                      <div className="role-permissions-section">
+                        <span className="role-section-label">Granted Permissions:</span>
+                        <div className="role-perms-pills">
+                          {role.permissions.map((p, pIdx) => (
+                            <span key={pIdx} className="role-perm-chip">
+                              {p}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Workflows */}
+                      <div className="role-workflows-section">
+                        <span className="role-section-label">Primary Enterprise Workflows:</span>
+                        <ul className="role-workflows-list">
+                          {role.workflows.map((wf, wIdx) => (
+                            <li key={wIdx}>{wf}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Role-Specific Frontend Screenshots Grid */}
+                      <div className="role-screenshots-container">
+                        <div className="role-screenshots-head">
+                          <span className="role-section-label">Accessible Module Interfaces ({roleScreenshots.length}):</span>
+                          <span className="role-screens-tip">Click to enlarge</span>
+                        </div>
+                        <div className="role-screenshots-flex-grid">
+                          {roleScreenshots.map((img) => (
+                            <button
+                              key={img.id}
+                              type="button"
+                              className="role-mini-thumb-btn"
+                              onClick={() => {
+                                const globalIdx = project.images.indexOf(img)
+                                if (globalIdx !== -1 && onOpenLightbox) {
+                                  onOpenLightbox(globalIdx)
+                                }
+                              }}
+                              title={`View ${img.title} in Lightbox`}
+                            >
+                              <div className="role-mini-img-wrap">
+                                <img src={img.thumb} alt={img.title} className="role-mini-img" loading="lazy" />
+                                <span className="role-mini-badge">{img.tag}</span>
+                              </div>
+                              <span className="role-mini-label">{img.module || img.tag}</span>
+                            </button>
+                          ))}
+                        </div>
                       </div>
                     </div>
-
-                    {/* Workflows */}
-                    <div className="role-workflows-section">
-                      <span className="role-section-label">Primary Enterprise Workflows:</span>
-                      <ul className="role-workflows-list">
-                        {role.workflows.map((wf, wIdx) => (
-                          <li key={wIdx}>{wf}</li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Relevant module screenshot button */}
-                    <div className="role-card-footer">
-                      <span className="role-linked-label">Primary Interface:</span>
-                      <button
-                        type="button"
-                        className="role-linked-btn"
-                        onClick={() => {
-                          const targetImg = project.images.find(
-                            (img) => img.tag.toLowerCase() === role.screenshotTag.toLowerCase()
-                          )
-                          if (targetImg && onOpenLightbox) {
-                            onOpenLightbox(project.images.indexOf(targetImg))
-                          }
-                        }}
-                      >
-                        <span>View {role.screenshotTag} Interface</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="13"
-                          height="13"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          aria-hidden="true"
-                        >
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="12 5 19 12 12 19" />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             </div>
           )}

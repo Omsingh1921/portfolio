@@ -37,7 +37,9 @@ export default function CustomCursor() {
       const target = e.target
       if (target) {
         const isInteractive = Boolean(
-          target.closest('a, button, input, textarea, [role="button"], .btn, .gallery-thumb-btn, .main-image-interactive, .skill-badge, .about-highlight-card, .timeline-card')
+          target.closest(
+            'a, button, input, textarea, select, [role="button"], .btn, .interactive-card, .interactive-badge, .st-thumb-btn, .st-tab-button, .st-stat-card, .st-pillar-card, .st-decision-card, .st-arch-pipeline-card, .secondary-project-card, .skill-card, .skill-badge, .timeline-card, .education-card, .contact-detail-item, .hero-tech-pill, .hero-social-link, .hero-code-card'
+          )
         )
         setIsHovered(isInteractive)
       }

@@ -46,6 +46,12 @@
   border-radius: 50%;
   background-color: var(--accent-primary);
   border: 3px solid var(--bg-primary);
+  transition: transform var(--transition-interaction), box-shadow var(--transition-interaction);
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.25);
+  box-shadow: 0 0 12px var(--accent-primary);
 }
 
 /* Timeline Card */
@@ -55,12 +61,14 @@
   border-radius: var(--radius-lg);
   padding: 1.85rem 2rem;
   box-shadow: var(--shadow-card);
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  transition: transform var(--transition-interaction), border-color var(--transition-interaction), box-shadow var(--transition-interaction), background-color var(--transition-interaction);
 }
 
 .timeline-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-medium);
+  transform: var(--hover-lift-sm);
+  border-color: var(--border-accent);
+  background-color: var(--bg-surface-hover);
+  box-shadow: var(--shadow-interactive-card);
 }
 
 .timeline-card-header {

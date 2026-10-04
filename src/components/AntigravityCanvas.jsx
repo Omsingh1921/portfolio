@@ -40,8 +40,8 @@ export default function AntigravityCanvas() {
 
     const initGrid = () => {
       const rect = canvas.getBoundingClientRect()
-      width = rect.width
-      height = rect.height
+      width = rect.width || window.innerWidth
+      height = rect.height || window.innerHeight
       dpr = Math.min(window.devicePixelRatio || 1, 2)
 
       canvas.width = Math.floor(width * dpr)
@@ -86,8 +86,8 @@ export default function AntigravityCanvas() {
             targetAngle: 0,
             length: 3,
             targetLength: 3,
-            opacity: isDark ? 0.25 : 0.3,
-            targetOpacity: isDark ? 0.25 : 0.3,
+            opacity: isDark ? 0.28 : 0.32,
+            targetOpacity: isDark ? 0.28 : 0.32,
             activeColor,
             ratio,
           })
@@ -97,36 +97,28 @@ export default function AntigravityCanvas() {
 
     initGrid()
 
-    // Handle mouse movement over hero container or window
+    // Handle mouse movement anywhere over the window
     const handleMouseMove = (e) => {
-      const rect = canvas.getBoundingClientRect()
-      const clientX = e.clientX - rect.left
-      const clientY = e.clientY - rect.top
-
-      if (
-        clientX >= -50 &&
-        clientX <= width + 50 &&
-        clientY >= -50 &&
-        clientY <= height + 50
-      ) {
-        mouse.targetX = clientX
-        mouse.targetY = clientY
-        mouse.active = true
-      } else {
-        mouse.active = false
-      }
+      mouse.targetX = e.clientX
+      mouse.targetY = e.clientY
+      mouse.active = true
     }
 
     const handleMouseLeave = () => {
       mouse.active = false
     }
 
+    const handleScroll = () => {
+      if (mouse.targetX > -100) {
+        mouse.active = true
+      }
+    }
+
     const handleTouchMove = (e) => {
       if (e.touches.length > 0) {
         const touch = e.touches[0]
-        const rect = canvas.getBoundingClientRect()
-        mouse.targetX = touch.clientX - rect.left
-        mouse.targetY = touch.clientY - rect.top
+        mouse.targetX = touch.clientX
+        mouse.targetY = touch.clientY
         mouse.active = true
       }
     }
@@ -137,8 +129,10 @@ export default function AntigravityCanvas() {
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true })
     window.addEventListener('mouseleave', handleMouseLeave)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('touchmove', handleTouchMove, { passive: true })
     window.addEventListener('touchend', handleTouchEnd)
+    window.addEventListener('resize', initGrid)
 
     // Resize observer
     const resizeObserver = new ResizeObserver(() => {
@@ -275,8 +269,10 @@ export default function AntigravityCanvas() {
       cancelAnimationFrame(animationFrameId)
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseleave', handleMouseLeave)
+      window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('touchmove', handleTouchMove)
       window.removeEventListener('touchend', handleTouchEnd)
+      window.removeEventListener('resize', initGrid)
       resizeObserver.disconnect()
     }
   }, [isDark])

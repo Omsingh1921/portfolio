@@ -27,18 +27,18 @@
   border-radius: var(--radius-lg);
   padding: 1.75rem 1.6rem;
   box-shadow: var(--shadow-card);
-  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--transition-interaction), border-color var(--transition-interaction), box-shadow var(--transition-interaction);
 }
 
 .skill-card:hover {
-  transform: translateY(-2px);
+  transform: var(--hover-lift-md);
   border-color: var(--border-accent);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-interactive-card);
 }
 
 .skill-card:hover .skill-icon-wrap {
-  transform: scale(1.08);
-  box-shadow: 0 0 12px var(--accent-primary-dim);
+  transform: scale(1.08) translateY(-1px);
+  box-shadow: 0 0 16px var(--accent-primary-dim);
 }
 
 .skill-card-top {
@@ -60,7 +60,7 @@
   background-color: var(--accent-primary-dim);
   color: var(--accent-primary);
   flex-shrink: 0;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--transition-interaction), box-shadow var(--transition-interaction);
 }
 
 .skill-icon-wrap svg {
@@ -96,7 +96,7 @@
   font-size: 0.825rem;
   font-weight: 500;
   color: var(--text-secondary);
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-interaction), border-color var(--transition-interaction), background-color var(--transition-interaction), color var(--transition-interaction), box-shadow var(--transition-interaction);
   cursor: default;
 }
 
@@ -104,7 +104,8 @@
   background-color: var(--accent-primary-dim);
   border-color: var(--border-accent);
   color: var(--accent-primary);
-  transform: translateY(-1px);
+  transform: var(--hover-lift-xs);
+  box-shadow: 0 0 10px rgba(34, 184, 240, 0.18);
 }
 
 /* --------------------------------------------------------------------------

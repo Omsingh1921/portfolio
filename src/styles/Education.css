@@ -21,12 +21,14 @@
   border-radius: var(--radius-lg);
   padding: 2rem 2rem;
   box-shadow: var(--shadow-card);
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  transition: transform var(--transition-interaction), border-color var(--transition-interaction), box-shadow var(--transition-interaction), background-color var(--transition-interaction);
 }
 
 .education-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-medium);
+  transform: var(--hover-lift-sm);
+  border-color: var(--border-accent);
+  background-color: var(--bg-surface-hover);
+  box-shadow: var(--shadow-interactive-card);
 }
 
 .education-card-top {
@@ -45,6 +47,12 @@
   border-radius: var(--radius-sm);
   background-color: var(--accent-primary-dim);
   color: var(--accent-primary);
+  transition: transform var(--transition-interaction), box-shadow var(--transition-interaction);
+}
+
+.education-card:hover .education-icon-box {
+  transform: scale(1.08) translateY(-1px);
+  box-shadow: 0 0 14px var(--accent-primary-dim);
 }
 
 .education-icon-box.leetcode-icon {
@@ -61,6 +69,13 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-full);
   padding: 0.25rem 0.75rem;
+  transition: transform var(--transition-interaction), border-color var(--transition-interaction), color var(--transition-interaction);
+}
+
+.education-period-badge:hover {
+  transform: var(--hover-lift-xs);
+  border-color: var(--border-accent);
+  color: var(--accent-primary);
 }
 
 .education-degree {

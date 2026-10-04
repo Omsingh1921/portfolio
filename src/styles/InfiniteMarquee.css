@@ -1,0 +1,276 @@
+/* ==========================================================================
+   Infinite Continuous Project Marquee Styles
+   Inspired by Unfold / Mobbin / White Coffee Minimal Showcase
+   ========================================================================== */
+
+.infinite-marquee-section {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 1.5rem 0 3.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  user-select: none;
+}
+
+/* Edge Vignette Fades for Seamless Horizontal Bleed */
+.marquee-edge-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(40px, 10vw, 160px);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.marquee-edge-fade.left {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary) 0%, rgba(8, 11, 18, 0) 100%);
+}
+
+.marquee-edge-fade.right {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary) 0%, rgba(8, 11, 18, 0) 100%);
+}
+
+/* Track Wrapper */
+.marquee-row-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Individual Showcase Card */
+.project-marquee-card {
+  position: relative;
+  flex: 0 0 380px;
+  width: 380px;
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.45);
+  transition: transform var(--transition-interaction), border-color var(--transition-interaction), box-shadow var(--transition-interaction), filter var(--transition-interaction);
+  transform: scale(var(--proximity-scale, 1)) translate3d(0, 0, 0);
+}
+
+.project-marquee-card:hover {
+  transform: scale(1.06) translateY(-4px) translate3d(0, 0, 0) !important;
+  border-color: var(--border-accent);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.75), 0 0 24px -2px rgba(34, 184, 240, 0.35);
+  filter: brightness(1.06);
+  z-index: 10;
+}
+
+.marquee-card-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Card Header Metadata */
+.marquee-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.95rem;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.marquee-meta-brand {
+  color: var(--accent-primary);
+  text-transform: uppercase;
+}
+
+.marquee-meta-tech {
+  color: var(--text-muted);
+  font-size: 0.62rem;
+}
+
+/* Image Frame (16:10 aspect ratio) */
+.marquee-card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: #06090e;
+}
+
+.marquee-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform var(--transition-interaction-smooth);
+}
+
+.project-marquee-card:hover .marquee-card-img {
+  transform: scale(1.035);
+}
+
+.marquee-card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8, 11, 18, 0.85) 0%, rgba(8, 11, 18, 0.1) 45%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Card Footer with Module Title & CTA Badge */
+.marquee-card-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  z-index: 2;
+}
+
+.marquee-footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.marquee-module-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-primary);
+}
+
+.marquee-module-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* "VIEW PROJECT →" Badge */
+.marquee-view-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  background-color: rgba(34, 184, 240, 0.15);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.project-marquee-card:hover .marquee-view-badge {
+  background-color: var(--accent-primary);
+  color: #080B12;
+  transform: translateX(2px);
+}
+
+.marquee-view-badge svg {
+  transition: transform var(--transition-fast);
+}
+
+.project-marquee-card:hover .marquee-view-badge svg {
+  transform: translateX(2px);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints for Marquee
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .project-marquee-card {
+    flex: 0 0 330px;
+    width: 330px;
+  }
+}
+
+@media (max-width: 768px) {
+  .infinite-marquee-section {
+    gap: 1.15rem;
+    padding: 1rem 0 2.5rem;
+  }
+
+  .marquee-track {
+    gap: 1.15rem;
+  }
+
+  .project-marquee-card {
+    flex: 0 0 270px;
+    width: 270px;
+  }
+
+  .marquee-card-meta {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.6rem;
+  }
+
+  .marquee-module-title {
+    font-size: 0.78rem;
+  }
+
+  .marquee-view-badge {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.58rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-marquee-card {
+    flex: 0 0 240px;
+    width: 240px;
+  }
+
+  .marquee-edge-fade {
+    width: 32px;
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .infinite-marquee-section {
+    overflow-x: auto;
+  }
+
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+}
