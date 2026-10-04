@@ -1,0 +1,459 @@
+/**
+ * Portfolio Data Configuration
+ * Source of truth: Om Thakur's Resume (OM_THAKUR -.pdf) & SalesTracker Source Code
+ */
+
+export const personalDetails = {
+  name: 'Om Thakur',
+  greeting: "Hello, I'm",
+  role: 'Java Full Stack Developer',
+  headline: 'Specializing in Java backend engineering, Spring Boot microservices, secure REST APIs, and modern full-stack web applications.',
+  location: 'Indore, Madhya Pradesh',
+  email: 'omsinghthakur930@gmail.com',
+  phone: '+91 9302975212',
+  educationSummary: 'B.Tech in Information Technology | Sushila Devi Bansal College of Technology, Indore (2022–2026)',
+  resumeUrl: '/resume/Om-Thakur-Resume.pdf',
+  socialLinks: {
+    github: 'https://github.com/Omsingh1921',
+    linkedin: 'https://www.linkedin.com/in/om-thakur-/',
+  },
+}
+
+export const navLinks = [
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Contact', href: '#contact' },
+]
+
+export const primaryFocus = [
+  'Java',
+  'Spring Boot',
+  'REST APIs',
+  'MySQL',
+  'Spring Security',
+  'React',
+]
+
+/* Sourced from Resume: About Me Section Data */
+export const aboutDetails = {
+  profilePhoto: '/photo/1782923021949.png',
+  sectionLabel: 'ABOUT ME',
+  heading: 'Engineering reliable software systems with Java.',
+  paragraphs: [
+    'I am a Java Full Stack Developer with hands-on experience designing robust backend architectures and modern full-stack web applications using Spring Boot, REST APIs, MySQL, and React.',
+    'During my internship at Dollop Infotech in Indore, I engineered enterprise RESTful endpoints, implemented role-based access control (RBAC) and JWT authentication with Spring Security, and developed clean persistence layers using Spring Data JPA and Hibernate.',
+    'I bring a disciplined foundation in Core Java, Object-Oriented Software Design, and algorithmic problem solving with 100+ LeetCode problems solved. I am driven by sound software engineering principles—writing maintainable, secure code and building scalable systems.',
+  ],
+  highlights: [
+    { label: 'Role', value: 'Java Developer Intern' },
+    { label: 'Education', value: 'B.Tech — Information Technology' },
+    { label: 'Location', value: 'Indore, Madhya Pradesh' },
+    { label: 'Focus', value: 'Java Backend Development' },
+  ],
+}
+
+export const skillsDetails = {
+  sectionLabel: 'TECHNICAL SKILLS',
+  heading: 'Core Technical Competencies',
+  description: 'Structured categorization of backend frameworks, frontend technologies, relational databases, and computer science foundations.',
+}
+
+/* Sourced from Resume & Project Data: Clean Skill Categories */
+export const skillCategories = [
+  {
+    category: 'Backend',
+    icon: 'server',
+    skills: [
+      'Java',
+      'Spring Boot',
+      'Spring Security',
+      'Spring Data JPA',
+      'Hibernate',
+      'REST APIs',
+      'JWT',
+      'JUnit',
+    ],
+  },
+  {
+    category: 'Frontend',
+    icon: 'code',
+    skills: [
+      'React',
+      'JavaScript',
+      'HTML5',
+      'CSS3',
+      'Bootstrap',
+    ],
+  },
+  {
+    category: 'Database',
+    icon: 'database',
+    skills: [
+      'MySQL',
+      'PostgreSQL',
+    ],
+  },
+  {
+    category: 'Tools',
+    icon: 'tools',
+    skills: [
+      'Git',
+      'GitHub',
+      'Maven',
+      'Postman',
+    ],
+  },
+  {
+    category: 'Core CS',
+    icon: 'cpu',
+    skills: [
+      'OOP',
+      'Data Structures & Algorithms',
+      'Collections',
+      'Exception Handling',
+      'Multithreading',
+    ],
+  },
+]
+
+/* Sourced from SalesTracker Repository Reference - Smart Education Completely Removed */
+export const projects = [
+  {
+    id: 'sales-tracker',
+    featured: true,
+    name: 'SalesTracker',
+    title: 'Sales Tracking & Management System',
+    subtitle: 'Full-Stack Enterprise Sales Management Platform',
+    shortDescription: 'An enterprise-oriented sales management platform for managing users, leads, deals, sales, targets, reporting, and role-based access.',
+    description: 'A comprehensive, full-stack enterprise platform orchestrating the complete end-to-end sales lifecycle—from initial lead intake and interaction logging through opportunity qualification, stage progression, invoice generation, quota tracking, executive reporting, and audit compliance.',
+    problemSolved: 'Replaced disjointed spreadsheets and untracked pipelines with a unified system of record featuring recursive hierarchy-based data scoping, single-use JWT refresh token rotation, strict qualification state machines, automated revenue accounting, and immutable audit trails.',
+    technologies: [
+      'Java 21',
+      'Spring Boot 4.1',
+      'React 19',
+      'Vite',
+      'MySQL 8',
+      'Spring Security',
+      'JWT',
+      'Spring Data JPA',
+      'Hibernate',
+      'Axios Interceptors',
+      'REST APIs',
+    ],
+    features: [
+      {
+        title: 'Stateless JWT & Refresh Token Rotation',
+        desc: 'Issues 15-minute access tokens with single-use refresh token rotation and instant revocation upon logout or user deactivation.',
+      },
+      {
+        title: 'Granular Permission-Based Authorization',
+        desc: 'Decoupled role-permission engine enforcing method-level security (@PreAuthorize) across all sensitive API operations.',
+      },
+      {
+        title: 'Recursive Hierarchy Data Scoping',
+        desc: 'DataScopeService resolves organizational trees at the database query level, ensuring managers view only subordinate records without cross-team data leaks.',
+      },
+      {
+        title: 'End-to-End Deal State Machine',
+        desc: 'Strict multi-stage pipeline (Qualification, Needs Analysis, Value Prop, Proposal, Negotiation) requiring mandatory justification for closed-lost opportunities.',
+      },
+      {
+        title: 'Automated Invoice & Revenue Sync',
+        desc: 'Generates unique invoices that automatically transition deals to CLOSED_WON and update real-time sales quota achievements.',
+      },
+      {
+        title: 'Dynamic Target Quotas & Analytics',
+        desc: 'Monthly and annual target allocation with live progress tracking, conversion rates, and executive revenue dashboards.',
+      },
+      {
+        title: 'Immutable Security Audit Trail',
+        desc: 'Captures actor ID, target entity, timestamp, and action for all administrative and operational data mutations.',
+      },
+    ],
+    engineeringHighlights: [
+      'JWT Authentication & Refresh Token Rotation',
+      'Permission-Based Method Security (@PreAuthorize)',
+      'Subtree Query Resolution (DataScopeService)',
+      'Axios Interceptors with Automatic 401 Re-Auth',
+      'Clean Layered Architecture (Controller → Service → Repository)',
+      'Strict DTO Validation & Sanitized Error Responses',
+    ],
+    architecture: [
+      { step: 'Client', tech: 'React 19 + Vite' },
+      { step: 'Gateway', tech: 'Axios Interceptors / REST' },
+      { step: 'Security', tech: 'Spring Security Filter (JWT)' },
+      { step: 'Controllers', tech: 'REST Controllers (@Valid)' },
+      { step: 'Service Layer', tech: 'Business Rules & DataScope' },
+      { step: 'Persistence', tech: 'Spring Data JPA / Hibernate' },
+      { step: 'Database', tech: 'MySQL 8.0' },
+    ],
+    images: [
+      {
+        src: '/projects/salestracker/salestracker-dashboard.png',
+        thumb: '/projects/salestracker/salestracker-dashboard.png',
+        title: 'Executive Dashboard',
+        caption: 'Executive Dashboard displaying real-time metrics, conversion rates, monthly revenue targets, and recent sales activities.',
+        tag: 'Dashboard',
+        isMain: true,
+      },
+      {
+        src: '/projects/salestracker/salestracker-leads.png',
+        thumb: '/projects/salestracker/salestracker-leads.png',
+        title: 'Lead Management & Activity Tracking',
+        caption: 'Lead intake and qualification workflow with source tracking, status transitions, and chronological interaction logs.',
+        tag: 'Leads',
+      },
+      {
+        src: '/projects/salestracker/salestracker-deals.png',
+        thumb: '/projects/salestracker/salestracker-deals.png',
+        title: 'Deal Pipeline Progression',
+        caption: 'Multi-stage opportunity pipeline with qualification stage transitions and mandatory lost-reason capture.',
+        tag: 'Deals',
+      },
+      {
+        src: '/projects/salestracker/salestracker-sales.png',
+        thumb: '/projects/salestracker/salestracker-sales.png',
+        title: 'Sales & Invoicing System',
+        caption: 'Invoice generation, unique tracking numbers, payment status tracking, and automated deal synchronization.',
+        tag: 'Invoicing',
+      },
+      {
+        src: '/projects/salestracker/salestracker-reports.png',
+        thumb: '/projects/salestracker/salestracker-reports.png',
+        title: 'Analytics & Reporting Engine',
+        caption: 'Period sales breakdowns, rep performance analytics, pipeline health metrics, and conversion rates.',
+        tag: 'Reports',
+      },
+      {
+        src: '/projects/salestracker/salestracker-login.png',
+        thumb: '/projects/salestracker/salestracker-login.png',
+        title: 'Secure Authentication Portal',
+        caption: 'JWT authentication interface with credential validation and generic enumeration-safe failure responses.',
+        tag: 'Auth',
+      },
+    ],
+    githubUrl: 'https://github.com/Omsingh1921/SalesTracker',
+    liveUrl: null, // Verified: No real live URL exists
+    caseStudy: {
+      statistics: [
+        { label: 'Core Modules', value: '11', detail: 'End-to-end sales lifecycle coverage' },
+        { label: 'JPA Domain Entities', value: '9', detail: 'Relational MySQL persistence with soft-deletes' },
+        { label: 'REST API Controllers', value: '10', detail: 'Validated DTO endpoints with Bean Validation' },
+        { label: 'Standard Roles', value: '5', detail: 'Dynamic role hierarchy tree' },
+        { label: 'Granular Permissions', value: '27', detail: 'Fine-grained method-level authorities' },
+        { label: 'Verification Rate', value: '100%', detail: '25 Unit/Integration tests + 61 E2E tests passed' },
+      ],
+      projectOverview: {
+        type: 'Enterprise Sales Management & Pipeline Governance System',
+        architecture: 'Decoupled Layered Architecture (React 19 → Spring Boot 4.1 REST API → DataScope → MySQL 8)',
+        security: 'Dual-token stateless JWT (15m access / 7d refresh), single-use token rotation, BCrypt 10, @PreAuthorize evaluation',
+        database: 'MySQL 8 InnoDB engine, recursive CTE subtree queries, soft deletes (@SQLDelete, @SQLRestriction)',
+        roleManagement: 'Dynamic database RBAC via role_permissions, parent_role_id hierarchy, and privilege escalation guards',
+      },
+      problem: 'Growing sales organizations suffer from scattered customer data across spreadsheets, neglected leads without qualification workflows, opaque deal pipelines, unverified administrative changes, and manual quota calculations disconnected from paid invoices.',
+      solution: 'SalesTracker establishes a centralized, unified system of record where leads strictly follow a state machine, deals require mandatory justifications when lost, sales automatically synchronize deal statuses upon invoice payment, and managers only access the exact organizational subtree they oversee.',
+      architectureDetail: 'Built with a clean decoupled design. The React 19 frontend communicates via Axios with automatic JWT token refresh on 401 responses. The Spring Boot 4.1 backend validates tokens via custom JwtAuthenticationFilter, delegates to DataScopeService to resolve organizational subtree IDs at the database query level, and persists via Spring Data JPA to MySQL 8.',
+      securityDetail: 'Implements dual-token JWT authentication (15-min access token, 7-day refresh token) with single-use refresh token rotation to prevent replay attacks. Authorization is strictly permission-based rather than role-bound, evaluated at the controller method level with @PreAuthorize. All password credentials utilize BCrypt with cost factor 10.',
+      modulesDetail: 'Core modules include Authentication (JWT rotation/revocation), Users (organizational hierarchy trees), Roles & Permissions (fine-grained codes), Leads & Activities (intake, qualification, chronological logs), Deals (pipeline progression), Sales (invoice generation, payment tracking), Targets (monthly quotas), Reports (real-time dashboards), and Audit Logs (immutable event logging).',
+      roles: [
+        {
+          id: 'super-admin',
+          name: 'SUPER_ADMIN',
+          title: 'Global System Administrator',
+          level: 'Level 1 • Root Authority',
+          scope: 'Unrestricted Global Scope (All Tenancy & Records)',
+          description: 'Holds root architectural control. Exclusive authority to alter SUPER_ADMIN role definitions, configure organization-wide role hierarchies, manage all administrative accounts, and inspect immutable audit trails.',
+          permissions: ['USER_CREATE', 'USER_READ', 'USER_UPDATE', 'USER_DELETE', 'USER_DEACTIVATE', 'ROLE_CREATE', 'ROLE_READ', 'ROLE_UPDATE', 'ROLE_DELETE', 'PERMISSION_READ', 'AUDIT_READ', 'All Operational Authorities'],
+          workflows: ['Organizational reporting hierarchy definition', 'Dynamic role and permission matrix updates', 'Security audit log inspection and compliance verification', 'System-wide executive KPI monitoring'],
+          screenshotTag: 'Dashboard',
+        },
+        {
+          id: 'admin',
+          name: 'ADMIN',
+          title: 'Operations Administrator',
+          level: 'Level 2 • Operations Management',
+          scope: 'Global Operational Scope (Cross-Regional Records)',
+          description: 'Oversees day-to-day enterprise operations across all branches. Configures user accounts below ADMIN level, allocates representative sales quotas, and generates company-wide financial performance reports.',
+          permissions: ['USER_READ', 'USER_CREATE', 'USER_UPDATE', 'TARGET_CREATE', 'TARGET_READ', 'TARGET_UPDATE', 'REPORT_READ', 'LEAD_*', 'DEAL_*', 'SALE_*'],
+          workflows: ['User lifecycle onboarding and department assignments', 'Representative monthly/annual sales quota allocation', 'Executive period revenue analytics and loss-reason reviews', 'High-value opportunity and deal oversight'],
+          screenshotTag: 'Reports',
+        },
+        {
+          id: 'sales-manager',
+          name: 'SALES_MANAGER',
+          title: 'Regional Sales Manager',
+          level: 'Level 3 • Team Management',
+          scope: 'Recursive Reporting Subtree Scope (Self + Subordinate Reps)',
+          description: 'Manages a specific organizational subtree. DataScopeService dynamically resolves permitted user IDs using recursive parent traversal. Can assign leads, review deals, and track quotas only for subordinate reps without cross-branch data leaks.',
+          permissions: ['LEAD_READ', 'LEAD_UPDATE', 'LEAD_ASSIGN', 'DEAL_READ', 'DEAL_UPDATE', 'DEAL_ASSIGN', 'TARGET_READ', 'REPORT_READ'],
+          workflows: ['Incoming lead intake and delegation to subordinate sales reps', 'Team deal progression and stage transition reviews', 'Regional revenue pacing and team quota attainment tracking', 'Cross-branch data leakage prevention'],
+          screenshotTag: 'Leads',
+        },
+        {
+          id: 'sales-executive',
+          name: 'SALES_EXECUTIVE',
+          title: 'Sales Representative',
+          level: 'Level 4 • Frontline Commercial',
+          scope: 'Individual Assigned Records (Self Only)',
+          description: 'Frontline commercial representative. Scoped strictly to assigned leads and opportunities; creates chronological activity logs (calls, emails, meetings, notes, tasks) and advances opportunities through the deal funnel.',
+          permissions: ['LEAD_CREATE', 'LEAD_READ', 'LEAD_UPDATE', 'DEAL_CREATE', 'DEAL_READ', 'DEAL_UPDATE', 'DEAL_STAGE_UPDATE', 'SALE_CREATE', 'TARGET_READ'],
+          workflows: ['Prospect engagement and chronological activity logging', 'Opportunity qualification with mandatory win/loss reason capture', 'Unique invoice generation upon closing agreements', 'Personal monthly quota achievement percentage tracking'],
+          screenshotTag: 'Deals',
+        },
+        {
+          id: 'viewer',
+          name: 'VIEWER',
+          title: 'Read-Only Auditor & Stakeholder',
+          level: 'Level 5 • Observation',
+          scope: 'Read-Only Scoped Records',
+          description: 'Auditing and stakeholder role. Can inspect leads, deals, and reports without any mutation, assignment, or deletion rights. Safeguards data integrity during financial and compliance reviews.',
+          permissions: ['REPORT_READ', 'LEAD_READ', 'DEAL_READ', 'TARGET_READ'],
+          workflows: ['Financial compliance verification', 'Executive revenue dashboard inspection', 'Historical pipeline health auditing'],
+          screenshotTag: 'Invoicing',
+        },
+      ],
+      umlDiagrams: [
+        {
+          id: 'arch-diagram',
+          title: 'Layered System Architecture',
+          category: 'Architecture',
+          summary: 'Decoupled 7-layer pipeline enforcing separation of concerns between client presentation, security filtering, business logic, query scoping, and relational storage.',
+          flow: [
+            { step: '1. Presentation Layer', tech: 'React 19 + Vite (Axios Interceptors, Client Route Guards)' },
+            { step: '2. Security Gateway', tech: 'Spring Security Filter (JwtAuthenticationFilter & Token Validation)' },
+            { step: '3. API Controller Layer', tech: 'Spring Web REST Controllers with @Valid DTO Validation' },
+            { step: '4. Service Layer', tech: 'Business Logic & State Machine Rules (@Transactional)' },
+            { step: '5. Scoping Engine', tech: 'DataScopeService (Recursive CTE Subtree Query Resolution)' },
+            { step: '6. Persistence Layer', tech: 'Spring Data JPA & Hibernate ORM (Soft Deletes @SQLRestriction)' },
+            { step: '7. Relational Database', tech: 'MySQL 8.0 (InnoDB Engine, Foreign Keys, Unique Invoices)' },
+          ],
+        },
+        {
+          id: 'er-diagram',
+          title: 'Entity-Relationship (ER) Schema',
+          category: 'Data Model',
+          summary: 'Normalized relational schema with referential integrity foreign keys, soft-delete safety, and join tables connecting users, roles, permissions, leads, deals, sales, and targets.',
+          entities: [
+            { name: 'USERS', fields: 'id (PK), email [UNIQUE], password_hash, name, phone, status, parent_user_id (FK), role_id (FK), is_deleted' },
+            { name: 'ROLES', fields: 'id (PK), name [UNIQUE], description, parent_role_id (FK), is_deleted' },
+            { name: 'PERMISSIONS', fields: 'id (PK), name [UNIQUE], description, category' },
+            { name: 'ROLE_PERMISSIONS', fields: 'role_id (FK), permission_id (FK) [Composite PK]' },
+            { name: 'REFRESH_TOKENS', fields: 'id (PK), token_hash, user_id (FK), expiry_date, revoked' },
+            { name: 'LEADS', fields: 'id (PK), first_name, last_name, email, phone, company, status, source, assigned_to_user_id (FK), is_deleted' },
+            { name: 'LEAD_ACTIVITIES', fields: 'id (PK), lead_id (FK), activity_type, details, created_by_user_id (FK), created_at' },
+            { name: 'DEALS', fields: 'id (PK), title, value, lead_id (FK), stage, lost_reason, assigned_to_user_id (FK), closed_at' },
+            { name: 'SALES', fields: 'id (PK), deal_id (FK), amount, invoice_number [UNIQUE], payment_status, sale_date, salesperson_id (FK)' },
+            { name: 'TARGETS', fields: 'id (PK), user_id (FK), target_amount, target_month (1-12), target_year' },
+            { name: 'AUDIT_LOGS', fields: 'id (PK), actor_id (FK), action, entity_type, entity_id, timestamp, details' },
+          ],
+        },
+        {
+          id: 'jwt-auth-flow',
+          title: 'Authentication & Single-Use JWT Rotation',
+          category: 'Security',
+          summary: 'Cryptographically signed dual-token authentication flow with 15-minute access JWT, single-use refresh token rotation, Axios automatic 401 recovery, and database replay defense.',
+          steps: [
+            { step: 'Credentials Verification', detail: 'User submits POST /api/v1/auth/login; CustomUserDetailsService verifies BCrypt hash and checks account active status.' },
+            { step: 'Dual Token Issuance', detail: 'Backend issues 15-minute signed JWT access token + 7-day refresh token stored in refresh_tokens table.' },
+            { step: 'Stateless Authorization', detail: 'Subsequent requests pass Authorization: Bearer <token>; JwtAuthenticationFilter populates SecurityContext with GrantedAuthorities.' },
+            { step: 'Silent Refresh & Replay Protection', detail: 'On 401 Unauthorized, Axios interceptor pauses queue and calls POST /api/v1/auth/refresh. The old refresh token is immediately revoked and replaced with a new pair.' },
+            { step: 'Safe Logout Revocation', detail: 'Calling POST /api/v1/auth/logout deletes refresh token records from MySQL, invalidating future sessions immediately.' },
+          ],
+        },
+        {
+          id: 'sales-lifecycle',
+          title: 'Sales Lifecycle & Deal State Machine',
+          category: 'Workflow',
+          summary: 'Strict multi-stage commercial state machine enforcing sequential lead qualification, mandatory win/loss justification, unique invoice generation, and real-time quota synchronization.',
+          steps: [
+            { step: 'Lead Intake (NEW)', detail: 'Lead ingested from web form or manual entry; assigned to regional sales rep.' },
+            { step: 'Initial Outreach (CONTACTED)', detail: 'Rep logs call/email activity; direct skipping from NEW to QUALIFIED is blocked.' },
+            { step: 'Lead Qualification (QUALIFIED)', detail: 'Prospect verified against B2B criteria; converting lead automatically creates Deal in PROSPECTING.' },
+            { step: 'Deal Funnel Stages', detail: 'PROSPECTING → QUALIFICATION → NEEDS_ANALYSIS → VALUE_PROPOSITION → PROPOSAL_PRICE_QUOTE → NEGOTIATION.' },
+            { step: 'Win / Loss Validation', detail: 'CLOSED_LOST requires non-blank lostReason. CLOSED_WON coordinates with invoice generation.' },
+            { step: 'Invoice & Quota Sync', detail: 'Invoice payment set to COMPLETED automatically finalizes deal and recalculates rep monthly quota achievement percentage.' },
+          ],
+        },
+        {
+          id: 'role-hierarchy',
+          title: 'Dynamic Role Hierarchy & Method Security',
+          category: 'Authorization',
+          summary: 'Self-referential role tree ensuring parent roles supervise child branches, while controllers enforce method-level security with @PreAuthorize("hasAuthority(...)").',
+          levels: [
+            { role: 'SUPER_ADMIN', desc: 'Root authority with exclusive control over security parameters.' },
+            { role: 'ADMIN', desc: 'Operations oversight across all company branches.' },
+            { role: 'SALES_MANAGER', desc: 'Supervises regional branch; anti-escalation prevents assigning unpossessed rights.' },
+            { role: 'SALES_EXECUTIVE', desc: 'Frontline commercial execution within assigned accounts.' },
+            { role: 'VIEWER', desc: 'Read-only audit observations.' },
+          ],
+        },
+        {
+          id: 'datascope-flow',
+          title: 'Recursive Hierarchy & DataScope Resolution',
+          category: 'Data Scoping',
+          summary: 'DataScopeService resolves permitted user IDs using MySQL recursive CTE traversal down the manager reporting tree, isolating branches from cross-team data leaks.',
+          rules: [
+            { scope: 'Global (ADMIN)', desc: 'Unrestricted visibility across all records in the organization.' },
+            { scope: 'Subtree (SALES_MANAGER)', desc: 'Permitted user IDs = [Manager ID] + [All Subordinate User IDs]. Manager North cannot view Manager South.' },
+            { scope: 'Self (SALES_EXECUTIVE)', desc: 'Permitted user IDs = [Representative ID]. Scoped only to own assigned leads and deals.' },
+            { scope: 'Hierarchy Integrity', desc: 'Detects and rejects self-management and circular manager assignment loops via HierarchyViolationException.' },
+          ],
+        },
+      ],
+    },
+  },
+]
+
+/* Sourced from Resume: Experience */
+export const experience = [
+  {
+    role: 'Java Developer Intern',
+    company: 'Dollop Infotech',
+    location: 'Indore, Madhya Pradesh',
+    period: 'July 2026 – Present',
+    responsibilities: [
+      'Designed and integrated 10+ secure REST APIs using Java, Spring Boot, and Spring Data JPA following layered architecture patterns.',
+      'Implemented role-based access control (RBAC) and JWT authentication using Spring Security, enhancing application endpoint security.',
+      'Contributed to enterprise backend architecture, executing relational database design and data access layers with MySQL.',
+      'Collaborated with a team of developers using Git feature-branch workflows, participating in peer code reviews and debugging.',
+    ],
+  },
+]
+
+/* Sourced from Resume: Education */
+export const education = [
+  {
+    degree: 'B.Tech in Information Technology',
+    institution: 'Sushila Devi Bansal College of Technology, Indore',
+    period: 'Sep 2022 – June 2026',
+    score: 'CGPA: 6.9 / 10',
+    details: 'Coursework in Data Structures & Algorithms, Database Management Systems, Object-Oriented Software Design, Operating Systems, and Computer Networks.',
+  },
+  {
+    degree: 'Senior Secondary (Class XII)',
+    institution: 'New Kids Care School, Indore',
+    period: '2022',
+    score: '57%',
+    details: 'Curriculum focused on Physics, Chemistry, and Mathematics.',
+  },
+]
+
+/* Sourced from Resume: Problem Solving & Algorithms */
+export const problemSolving = {
+  platform: 'LeetCode',
+  problemsSolved: '100+ Problems Solved in Java',
+  description: 'Continuous practice focusing on computational complexity, clean object-oriented implementations, and algorithmic problem-solving.',
+  topics: [
+    'Heaps',
+    'Tries',
+    'Graphs',
+    'Trees',
+    'Hashing',
+    'Linked Lists',
+    'Stacks',
+    'Queues',
+  ],
+}

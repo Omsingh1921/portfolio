@@ -1,0 +1,177 @@
+/* ==========================================================================
+   Contact Section Styles (Recruiter-Friendly Contact Hub)
+   ========================================================================== */
+
+.contact-section {
+  position: relative;
+  padding: var(--section-spacing) 0;
+  scroll-margin-top: calc(var(--nav-height) + 1.25rem);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.contact-card-wrapper {
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.contact-main-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+/* Primary Email Block */
+.contact-primary-channel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.contact-channel-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: var(--accent-primary-dim);
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.contact-channel-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 200px;
+}
+
+.contact-channel-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.contact-channel-value {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+.contact-channel-value:hover {
+  color: var(--accent-primary);
+}
+
+.contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* 2x2 Details Grid */
+.contact-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.contact-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast);
+}
+
+.contact-detail-item:hover {
+  border-color: var(--border-medium);
+}
+
+.detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.detail-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.detail-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.detail-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detail-value.link {
+  transition: color var(--transition-fast);
+}
+
+.detail-value.link:hover {
+  color: var(--accent-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .contact-main-card {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .contact-primary-channel {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-actions {
+    width: 100%;
+  }
+
+  .contact-actions .btn {
+    flex: 1;
+  }
+
+  .contact-details-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+}

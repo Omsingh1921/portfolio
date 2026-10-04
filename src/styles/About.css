@@ -1,0 +1,347 @@
+/* ==========================================================================
+   About Section Styles (Polished SaaS Aesthetic)
+   ========================================================================== */
+
+.about-section {
+  position: relative;
+  padding: var(--section-spacing) 0;
+  scroll-margin-top: calc(var(--nav-height) + 1.25rem);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 4.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   LEFT: Visual Composition
+   -------------------------------------------------------------------------- */
+
+.about-visual-col {
+  display: flex;
+  justify-content: center;
+}
+
+.about-architecture-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 1.85rem 1.85rem;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.about-architecture-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-md);
+}
+
+/* Card Header */
+.arch-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.arch-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  background-color: var(--accent-primary-dim);
+  border: 1px solid var(--border-accent);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.arch-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-primary);
+  box-shadow: 0 0 6px var(--accent-primary);
+}
+
+.arch-card-tech {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Profile Identity */
+.arch-profile-identity {
+  margin-bottom: 1.25rem;
+}
+
+.arch-profile-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+}
+
+.arch-profile-role {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Capabilities List */
+.arch-capabilities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.arch-cap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.arch-cap-item:hover {
+  background-color: var(--accent-primary-dim);
+  border-color: var(--border-accent);
+  transform: translateX(2px);
+}
+
+.arch-cap-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-xs);
+  background-color: var(--bg-surface);
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.arch-cap-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.arch-cap-title {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.arch-cap-desc {
+  font-size: 0.735rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+/* Credential Badge */
+.about-credential-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.95rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-top: 0.25rem;
+}
+
+.credential-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background-color: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  flex-shrink: 0;
+}
+
+.credential-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.credential-title {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.credential-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT: Content & Highlights Grid
+   -------------------------------------------------------------------------- */
+
+.about-content-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-heading {
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.about-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.about-p {
+  font-size: 1.025rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* Highlights 2x2 Grid */
+.about-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.about-highlight-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.95rem 1.15rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.about-highlight-card:hover {
+  border-color: var(--border-medium);
+  transform: translateY(-1px);
+}
+
+.highlight-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent-primary-dim);
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.highlight-icon-box svg {
+  width: 17px;
+  height: 17px;
+}
+
+.highlight-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.highlight-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.highlight-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 960px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .about-content-col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-paragraphs {
+    text-align: left;
+  }
+
+  .about-highlights-grid {
+    max-width: 540px;
+  }
+}
+
+@media (max-width: 580px) {
+  .about-architecture-card {
+    max-width: 100%;
+    padding: 1.35rem 1.15rem;
+  }
+
+  .about-highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .about-highlight-value {
+    white-space: normal;
+  }
+}
