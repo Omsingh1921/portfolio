@@ -1,4 +1,5 @@
 import { aboutDetails } from '../data/portfolioData'
+import ScrollReveal from './ScrollReveal'
 import '../styles/About.css'
 
 export default function About() {
@@ -93,7 +94,7 @@ export default function About() {
       <div className="container">
         <div className="about-grid">
           {/* LEFT: Engineering Profile & Architecture Highlights */}
-          <div className="about-visual-col">
+          <ScrollReveal className="about-visual-col">
             <div className="about-architecture-card">
               <div className="arch-card-header">
                 <div className="arch-card-badge">
@@ -233,10 +234,10 @@ export default function About() {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* RIGHT: About Details & Information Grid */}
-          <div className="about-content-col">
+          <ScrollReveal className="about-content-col" delay={120}>
             <div className="section-label-badge">
               <span className="section-label-dot"></span>
               <span className="section-label-text">{aboutDetails.sectionLabel}</span>
@@ -266,7 +267,7 @@ export default function About() {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

@@ -23,6 +23,7 @@ export const personalDetails = {
 export const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
+  { name: 'Engineering', href: '#ecosystem' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
   { name: 'Experience', href: '#experience' },
@@ -37,6 +38,73 @@ export const primaryFocus = [
   'Spring Security',
   'React',
 ]
+
+/* Engineering Ecosystem Configuration (Renaissance-inspired Connected Architecture) */
+export const ecosystemData = {
+  center: {
+    name: 'OM THAKUR',
+    role: 'Java Full Stack Developer',
+    subtitle: 'Production Backend Engineering & Modern React Architecture',
+  },
+  nodes: [
+    {
+      id: 'spring-boot',
+      title: 'Java & Spring Boot',
+      category: 'BACKEND CORE',
+      description: 'Layered enterprise services, IoC container, Spring MVC, and robust dependency injection.',
+      skills: ['Java 21', 'Spring Boot 3', 'Spring MVC'],
+    },
+    {
+      id: 'rest-api',
+      title: 'REST API Development',
+      category: 'API DESIGN',
+      description: 'RESTful endpoint contracts, DTO validations (@Valid), and global error handlers (@ControllerAdvice).',
+      skills: ['REST APIs', 'DTO Pattern', 'Swagger/OpenAPI'],
+    },
+    {
+      id: 'jwt-security',
+      title: 'JWT + RBAC Security',
+      category: 'SECURITY',
+      description: 'Stateless access tokens, single-use refresh token rotation in MySQL, and @PreAuthorize method security.',
+      skills: ['Spring Security', 'JWT Rotation', 'Dynamic RBAC'],
+    },
+    {
+      id: 'react-frontend',
+      title: 'React Frontend',
+      category: 'CLIENT ARCHITECTURE',
+      description: 'Modern SPA development with React 19, Vite, Axios interceptors with automated 401 re-authentication.',
+      skills: ['React', 'Vite', 'Axios Interceptors'],
+    },
+    {
+      id: 'mysql-jpa',
+      title: 'MySQL & JPA',
+      category: 'DATA PERSISTENCE',
+      description: 'Relational ACID schema design, Spring Data JPA, Hibernate ORM, and recursive CTE subtree queries.',
+      skills: ['MySQL', 'Spring Data JPA', 'Hibernate'],
+    },
+    {
+      id: 'system-design',
+      title: 'System Design',
+      category: 'SYSTEM ARCHITECTURE',
+      description: 'Decoupled 7-layer pipeline enforcing strict separation between controllers, business logic, and storage.',
+      skills: ['Layered Architecture', 'OOP Patterns', 'Microservices'],
+    },
+    {
+      id: 'enterprise-arch',
+      title: 'Enterprise Architecture',
+      category: 'GOVERNANCE',
+      description: 'Hierarchical role trees, DataScopeService subtree resolution, and immutable security audit trails.',
+      skills: ['DataScopeService', 'Role Hierarchy', 'Audit Logs'],
+    },
+    {
+      id: 'production-eng',
+      title: 'Production Engineering',
+      category: 'DEVOPS & TOOLS',
+      description: 'Git branch workflows, Maven build automation, Postman integration testing, and clean error sanitization.',
+      skills: ['Git & GitHub', 'Maven', 'Postman'],
+    },
+  ],
+}
 
 /* Sourced from Resume: About Me Section Data */
 export const aboutDetails = {
@@ -62,61 +130,39 @@ export const skillsDetails = {
   description: 'Structured categorization of backend frameworks, frontend technologies, relational databases, and computer science foundations.',
 }
 
-/* Sourced from Resume & Project Data: Clean Skill Categories */
+/* Structured skill categories grouped logically by Languages, Backend, Frontend, Database, and Tools */
 export const skillCategories = [
   {
-    category: 'Backend',
+    category: 'LANGUAGES',
+    icon: 'code',
+    skills: ['Java', 'JavaScript', 'SQL'],
+  },
+  {
+    category: 'BACKEND',
     icon: 'server',
     skills: [
-      'Java',
       'Spring Boot',
-      'Spring Security',
+      'Spring MVC',
       'Spring Data JPA',
       'Hibernate',
       'REST APIs',
-      'JWT',
-      'JUnit',
+      'JWT Security',
     ],
   },
   {
-    category: 'Frontend',
+    category: 'FRONTEND',
     icon: 'code',
-    skills: [
-      'React',
-      'JavaScript',
-      'HTML5',
-      'CSS3',
-      'Bootstrap',
-    ],
+    skills: ['React', 'Vite', 'HTML', 'CSS', 'Bootstrap'],
   },
   {
-    category: 'Database',
+    category: 'DATABASE',
     icon: 'database',
-    skills: [
-      'MySQL',
-      'PostgreSQL',
-    ],
+    skills: ['MySQL'],
   },
   {
-    category: 'Tools',
+    category: 'TOOLS',
     icon: 'tools',
-    skills: [
-      'Git',
-      'GitHub',
-      'Maven',
-      'Postman',
-    ],
-  },
-  {
-    category: 'Core CS',
-    icon: 'cpu',
-    skills: [
-      'OOP',
-      'Data Structures & Algorithms',
-      'Collections',
-      'Exception Handling',
-      'Multithreading',
-    ],
+    skills: ['Git', 'GitHub', 'Maven', 'Postman'],
   },
 ]
 
@@ -513,6 +559,166 @@ export const projects = [
       ],
     },
   },
+  {
+    id: 'employee-management-system',
+    featured: false,
+    name: 'Employee Management System',
+    title: 'Enterprise Employee & Department Management System',
+    subtitle: 'Workforce & Hierarchy Administration',
+    shortDescription: 'Enterprise backend system and portal for managing employee records, departmental hierarchies, and compensation tiers.',
+    description: 'A production-oriented employee governance backend managing organizational structures, department allocations, role assignments, and employee records using Spring Boot layered architecture and MySQL.',
+    technologies: [
+      'Java',
+      'Spring Boot',
+      'Spring Data JPA',
+      'Hibernate',
+      'MySQL',
+      'REST APIs',
+      'Maven',
+    ],
+    features: [
+      {
+        title: 'Departmental Structure & Onboarding',
+        desc: 'Manages employee lifecycles from onboarding through departmental transfers and active status tracking.',
+      },
+      {
+        title: 'Layered Service-Repository Architecture',
+        desc: 'Strict separation of REST controllers, transaction boundaries (@Transactional), and persistence operations.',
+      },
+      {
+        title: 'Relational Schema & Foreign Keys',
+        desc: 'Normalized MySQL relational tables maintaining referential integrity across departments and employees.',
+      },
+    ],
+    engineeringHighlights: [
+      'Clean Controller → Service → Repository Architecture',
+      'Transactional Business Boundaries (@Transactional)',
+      'Relational Schema Design & Indexing with MySQL',
+      'Centralized DTO Validation & Exception Handling',
+    ],
+    githubUrl: 'https://github.com/Omsingh1921',
+    liveUrl: null,
+  },
+  {
+    id: 'hospital-management-system',
+    featured: false,
+    name: 'Hospital Management System',
+    title: 'Healthcare Operations & Medical Record System',
+    subtitle: 'Clinical Workflow & Patient Care Platform',
+    shortDescription: 'Full-stack healthcare operations platform managing patient admissions, doctor directories, appointment scheduling, and electronic records.',
+    description: 'A comprehensive hospital management platform providing end-to-end clinical workflow automation—doctor scheduling, department categorization, patient registration, and appointment lifecycle tracking.',
+    technologies: [
+      'Java',
+      'Spring Boot',
+      'React',
+      'MySQL',
+      'Spring Data JPA',
+      'REST APIs',
+      'Vite',
+      'Axios',
+    ],
+    features: [
+      {
+        title: 'Doctor & Department Directory',
+        desc: 'Categorized clinical departments with doctor assignment and availability scheduling.',
+      },
+      {
+        title: 'Patient Intake & Medical Records',
+        desc: 'Patient admission logging with historical consultation details and medical records.',
+      },
+      {
+        title: 'Appointment Lifecycle Management',
+        desc: 'Multi-status appointment scheduling pipeline from booking to completion.',
+      },
+    ],
+    engineeringHighlights: [
+      'Spring Boot RESTful Services with JPA Entities',
+      'Component-Driven React Interface with Vite',
+      'Normalized Relational Healthcare Schema',
+      'Axios Service Layer with Modular API Endpoints',
+    ],
+    githubUrl: 'https://github.com/Omsingh1921/HospitalManagementSystem-beckend',
+    liveUrl: null,
+  },
+  {
+    id: 'student-management-system',
+    featured: false,
+    name: 'Student Management System / REST API',
+    title: 'Academic Administration & Student Lifecycle REST API',
+    subtitle: 'Academic Records & Enrollment Platform',
+    shortDescription: 'Full-stack academic administration system providing student enrollment, course allocation, fee status tracking, and department reporting.',
+    description: 'Full-stack academic management solution with Spring Boot REST API and React frontend for tracking student enrollments, academic progression, fee statuses, and administrative records.',
+    technologies: [
+      'Java',
+      'Spring Boot',
+      'React',
+      'MySQL',
+      'Spring Data JPA',
+      'REST APIs',
+      'Maven',
+      'Vite',
+    ],
+    features: [
+      {
+        title: 'Student Enrollment & Records',
+        desc: 'Comprehensive student profile management with academic history and contact details.',
+      },
+      {
+        title: 'Course & Department Tracking',
+        desc: 'Curriculum course assignments with department-level record segmentation.',
+      },
+      {
+        title: 'Validated REST API Endpoints',
+        desc: 'Spring Boot REST controllers enforcing strict input validation and structured JSON responses.',
+      },
+    ],
+    engineeringHighlights: [
+      'RESTful Architecture with Bean Validation',
+      'Spring Data JPA Repositories & Relational Mapping',
+      'Responsive React Frontend for Administrative Users',
+      'Decoupled Client-Server Communication',
+    ],
+    githubUrl: 'https://github.com/Omsingh1921/StudentManagementSystemFrontEnd',
+    liveUrl: null,
+  },
+  {
+    id: 'tryone',
+    featured: false,
+    name: 'TRYONE',
+    title: 'Interactive Web Application & Frontend Architecture',
+    subtitle: 'Modern Component-Driven Web Application',
+    shortDescription: 'Modern interactive web platform engineered with React and component-driven architecture, featuring responsive design and state synchronization.',
+    description: 'A modern, dynamic web application designed with component-driven React architecture, optimized rendering pipelines, responsive mobile-first layouts, and clean API integration.',
+    technologies: [
+      'React',
+      'JavaScript',
+      'Vite',
+      'CSS3',
+      'REST APIs',
+    ],
+    features: [
+      {
+        title: 'Modular Component Architecture',
+        desc: 'Cleanly decoupled reusable React components with structured state management.',
+      },
+      {
+        title: 'Responsive Design & Interactions',
+        desc: 'Mobile-first layout supporting seamless interaction across devices.',
+      },
+      {
+        title: 'Optimized Rendering Pipeline',
+        desc: 'Fast rendering times and smooth CSS transitions without unnecessary re-renders.',
+      },
+    ],
+    engineeringHighlights: [
+      'Component-Driven Design with Modern React Hooks',
+      'Responsive Flexbox & Grid Layout System',
+      'Lightweight Client State Synchronization',
+      'Cross-Browser Tested & Optimized Performance',
+    ],
+    githubUrl: 'https://github.com/Omsingh1921',
+    liveUrl: null,
+  },
 ]
 
 /* Centralized export of verified SalesTracker frontend screenshots */
@@ -525,11 +731,28 @@ export const experience = [
     company: 'Dollop Infotech',
     location: 'Indore, Madhya Pradesh',
     period: 'July 2026 – Present',
+    duration: 'July 2026 – Present',
     responsibilities: [
       'Designed and integrated 10+ secure REST APIs using Java, Spring Boot, and Spring Data JPA following layered architecture patterns.',
       'Implemented role-based access control (RBAC) and JWT authentication using Spring Security, enhancing application endpoint security.',
       'Contributed to enterprise backend architecture, executing relational database design and data access layers with MySQL.',
       'Collaborated with a team of developers using Git feature-branch workflows, participating in peer code reviews and debugging.',
+    ],
+    technologies: [
+      'Java',
+      'Spring Boot',
+      'Spring Security',
+      'JWT',
+      'Spring Data JPA',
+      'Hibernate',
+      'MySQL',
+      'REST APIs',
+      'Git',
+    ],
+    achievements: [
+      'Engineered and delivered 10+ production-grade REST API endpoints with robust DTO validation.',
+      'Strengthened backend authorization security by implementing granular RBAC and JWT token filters.',
+      'Optimized persistence queries and schema integrity using Spring Data JPA and Hibernate.',
     ],
   },
 ]

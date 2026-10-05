@@ -5,12 +5,9 @@ import '../styles/Hero.css'
 const orbitTechBadges = [
   { name: 'Java', dotClass: 'java-dot' },
   { name: 'Spring Boot', dotClass: 'spring-dot' },
-  { name: 'Kafka', dotClass: 'kafka-dot' },
   { name: 'React', dotClass: 'react-dot' },
-  { name: 'JWT • RBAC', dotClass: 'jwt-dot' },
   { name: 'MySQL', dotClass: 'mysql-dot' },
-  { name: 'Docker', dotClass: 'docker-dot' },
-  { name: 'Redis', dotClass: 'redis-dot' },
+  { name: 'JWT / RBAC', dotClass: 'jwt-dot' },
 ]
 
 export default function Hero() {
@@ -254,13 +251,13 @@ export default function Hero() {
               onMouseEnter={() => setIsOrbitPaused(true)}
               onMouseLeave={() => setIsOrbitPaused(false)}
             >
-              {/* Main Photo Architecture Panel - Completely clean without any overlapping badges or text */}
+              {/* DealController.java Code Editor Architecture Panel */}
               <div
-                className="hero-code-card interactive-card"
+                className="hero-code-card interactive-card hero-code-editor-panel"
                 style={{
                   transform: `translate3d(${parallax.x * -6}px, ${parallax.y * -6}px, 0)`,
                 }}
-                aria-label="Om Thakur - Full Stack Software Engineer Visual"
+                aria-label="DealController.java Spring Boot Architecture Visual"
               >
                 <div className="code-card-header">
                   <div className="code-dots">
@@ -269,30 +266,69 @@ export default function Hero() {
                     <span className="code-dot green"></span>
                   </div>
                   <div className="code-tab-title">
-                    <span className="code-live-pulse" aria-hidden="true"></span>
-                    <span>Full Stack Engineer</span>
+                    <svg
+                      className="code-tab-icon"
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <polyline points="14 2 14 8 20 8" />
+                      <line x1="16" y1="13" x2="8" y2="13" />
+                      <line x1="16" y1="17" x2="8" y2="17" />
+                    </svg>
+                    <span className="code-file-name">DealController.java</span>
+                    <span className="code-git-branch">git:(main)</span>
                   </div>
-                  <span className="code-framework-pill">Java 21 • Spring Boot 3</span>
+                  <span className="code-framework-pill">Spring Boot 3.2 • REST</span>
                 </div>
 
-                {/* Clean Photo Display inside Visual */}
-                <div className="code-card-photo-body">
-                  <img
-                    src={personalDetails.profilePhoto || '/photo/1782923021949.png'}
-                    alt="Om Thakur - Java Full Stack Developer"
-                    className="hero-code-photo-img"
-                    loading="eager"
-                  />
-                  <div className="hero-code-photo-scrim" aria-hidden="true" />
+                {/* Developer Code Visual Panel */}
+                <div className="code-editor-view">
+                  <pre className="code-editor-pre">
+                    <code>
+                      <span className="code-line"><span className="code-ln">01</span><span className="c-ann">@RestController</span></span>
+                      <span className="code-line"><span className="code-ln">02</span><span className="c-ann">@RequestMapping</span>(<span className="c-str">"/api/v1/deals"</span>)</span>
+                      <span className="code-line"><span className="code-ln">03</span><span className="c-kw">public class</span> <span className="c-cls">DealController</span> &#123;</span>
+                      <span className="code-line"><span className="code-ln">04</span></span>
+                      <span className="code-line"><span className="code-ln">05</span>  <span className="c-kw">private final</span> <span className="c-type">DealService</span> <span className="c-var">dealService</span>;</span>
+                      <span className="code-line"><span className="code-ln">06</span>  <span className="c-kw">private final</span> <span className="c-type">DataScopeService</span> <span className="c-var">dataScopeService</span>;</span>
+                      <span className="code-line"><span className="code-ln">07</span></span>
+                      <span className="code-line"><span className="code-ln">08</span>  <span className="c-ann">@GetMapping</span></span>
+                      <span className="code-line"><span className="code-ln">09</span>  <span className="c-ann">@PreAuthorize</span>(<span className="c-str">"hasAuthority('DEAL_READ')"</span>)</span>
+                      <span className="code-line"><span className="code-ln">10</span>  <span className="c-kw">public</span> <span className="c-type">ResponseEntity</span>&lt;<span className="c-type">Page</span>&lt;<span className="c-type">DealDto</span>&gt;&gt; <span className="c-fn">getDeals</span>(</span>
+                      <span className="code-line"><span className="code-ln">11</span>      <span className="c-ann">@AuthenticationPrincipal</span> <span className="c-type">UserPrincipal</span> <span className="c-var">user</span>,</span>
+                      <span className="code-line"><span className="code-ln">12</span>      <span className="c-ann">@RequestParam</span>(<span className="c-kw">defaultValue</span> = <span className="c-str">"0"</span>) <span className="c-kw">int</span> <span className="c-var">page</span>) &#123;</span>
+                      <span className="code-line"><span className="code-ln">13</span>    <span className="c-type">Set</span>&lt;<span className="c-type">Long</span>&gt; <span className="c-var">ids</span> = <span className="c-var">dataScopeService</span>.<span className="c-fn">getPermittedIds</span>(<span className="c-var">user</span>);</span>
+                      <span className="code-line"><span className="code-ln">14</span>    <span className="c-kw">return</span> <span className="c-type">ResponseEntity</span>.<span className="c-fn">ok</span>(<span className="c-var">dealService</span>.<span className="c-fn">findAll</span>(<span className="c-var">ids</span>, <span className="c-var">page</span>));</span>
+                      <span className="code-line"><span className="code-ln">15</span>  &#125;</span>
+                      <span className="code-line"><span className="code-ln">16</span></span>
+                      <span className="code-line"><span className="code-ln">17</span>  <span className="c-ann">@PostMapping</span></span>
+                      <span className="code-line"><span className="code-ln">18</span>  <span className="c-ann">@PreAuthorize</span>(<span className="c-str">"hasAuthority('DEAL_CREATE')"</span>)</span>
+                      <span className="code-line"><span className="code-ln">19</span>  <span className="c-kw">public</span> <span className="c-type">ResponseEntity</span>&lt;<span className="c-type">DealDto</span>&gt; <span className="c-fn">createDeal</span>(</span>
+                      <span className="code-line"><span className="code-ln">20</span>      <span className="c-ann">@Valid @RequestBody</span> <span className="c-type">DealCreateDto</span> <span className="c-var">dto</span>,</span>
+                      <span className="code-line"><span className="code-ln">21</span>      <span className="c-ann">@AuthenticationPrincipal</span> <span className="c-type">UserPrincipal</span> <span className="c-var">user</span>) &#123;</span>
+                      <span className="code-line"><span className="code-ln">22</span>    <span className="c-kw">return</span> <span className="c-type">ResponseEntity</span>.<span className="c-fn">status</span>(<span className="c-type">HttpStatus</span>.<span className="c-prop">CREATED</span>)</span>
+                      <span className="code-line"><span className="code-ln">23</span>        .<span className="c-fn">body</span>(<span className="c-var">dealService</span>.<span className="c-fn">create</span>(<span className="c-var">dto</span>, <span className="c-var">user</span>.<span className="code-fn">getId</span>()));</span>
+                      <span className="code-line"><span className="code-ln">24</span>  &#125;</span>
+                      <span className="code-line"><span className="code-ln">25</span>&#125;</span>
+                    </code>
+                  </pre>
                 </div>
 
-                {/* Clean Status Footer Bar inside Card */}
+                {/* Clean Status Footer Bar inside Code Editor */}
                 <div className="code-card-clean-footer">
                   <div className="clean-footer-status">
                     <span className="clean-status-dot" />
-                    <span>SYSTEM READY • PRODUCTION PIPELINE</span>
+                    <span>SYSTEM READY • REST 200 OK</span>
                   </div>
-                  <span className="clean-footer-tech">PORT 8080</span>
+                  <span className="clean-footer-tech">PORT 8080 • JVM 21</span>
                 </div>
               </div>
 

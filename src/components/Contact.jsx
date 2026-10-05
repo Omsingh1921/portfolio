@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { personalDetails } from '../data/portfolioData'
+import ScrollReveal from './ScrollReveal'
 import '../styles/Contact.css'
 
 export default function Contact() {
@@ -15,7 +16,7 @@ export default function Contact() {
     <section id="contact" className="contact-section" aria-label="Contact Om Thakur">
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <ScrollReveal className="section-header">
           <div className="section-label-badge">
             <span className="section-label-dot"></span>
             <span className="section-label-text">GET IN TOUCH</span>
@@ -25,10 +26,10 @@ export default function Contact() {
           <p className="section-subheading">
             I'm actively seeking software engineering and Java backend developer opportunities. Feel free to connect directly.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Contact Layout */}
-        <div className="contact-card-wrapper">
+        <ScrollReveal className="contact-card-wrapper" delay={100}>
           <div className="contact-main-card">
             {/* Primary Email Block */}
             <div className="contact-primary-channel">
@@ -213,7 +214,7 @@ export default function Contact() {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   )

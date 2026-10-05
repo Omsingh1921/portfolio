@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { projects } from '../data/portfolioData'
 import ProjectLightbox from './ProjectLightbox'
 import CaseStudyModal from './CaseStudyModal'
@@ -15,16 +15,15 @@ export default function Projects() {
   const [isUmlZoomed, setIsUmlZoomed] = useState(false)
   const thumbnailStripRef = useRef(null)
 
+  const [selectedProjectId, setSelectedProjectId] = useState('sales-tracker')
   const featuredProject = projects.find((p) => p.featured) || projects[0]
   const secondaryProjects = projects.filter((p) => !p.featured)
+  const activeSelectedProject = projects.find((p) => p.id === selectedProjectId) || featuredProject
   const allImages = featuredProject.images || []
   const umlDiagrams = featuredProject.caseStudy?.umlDiagrams || []
-  const currentImage = allImages[activeImageIndex] || allImages[0] || {}
 
-  const row1Images = useMemo(() => allImages.slice(0, 6), [allImages])
-  const row2Images = useMemo(() => allImages.slice(6, 12), [allImages])
-
-  const handleSelectMarqueeImage = (img, idx) => {
+  const handleSelectMarqueeImage = (_img, idx) => {
+    setSelectedProjectId('sales-tracker')
     setActiveImageIndex(idx)
     setIsLightboxOpen(true)
   }
@@ -412,55 +411,107 @@ export default function Projects() {
           </p>
         </ScrollReveal>
 
+        {/* Project Switcher Strip */}
+        <div className="st-project-switcher-wrap">
+          <div className="st-project-switcher" role="tablist" aria-label="Select Project to Inspect">
+            {projects.map((p) => {
+              const isActive = p.id === selectedProjectId
+              return (
+                <button
+                  key={p.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`st-project-switch-pill ${isActive ? 'active' : ''}`}
+                  onClick={() => setSelectedProjectId(p.id)}
+                >
+                  <span className="switch-pill-dot" />
+                  <span className="switch-pill-name">{p.name}</span>
+                  {p.featured && <span className="switch-pill-badge">FEATURED</span>}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
         {/* ====================================================================
-            FEATURED PROJECT CASE STUDY: SALES TRACKER
+            ACTIVE PROJECT DETAIL PANEL
             ==================================================================== */}
-        <ScrollReveal className="st-case-study-hero">
+        <ScrollReveal key={activeSelectedProject.id} className="st-case-study-hero">
           <div className="st-hero-badge">
             <span className="st-badge-dot"></span>
-            <span className="st-badge-text">FEATURED PROJECT · ENTERPRISE APPLICATION</span>
+            <span className="st-badge-text">
+              {activeSelectedProject.featured ? 'FEATURED PROJECT · ENTERPRISE APPLICATION' : 'ENGINEERING PROJECT'}
+            </span>
           </div>
 
-          <h3 className="st-hero-title">SALES TRACKER</h3>
+          <h3 className="st-hero-title">{activeSelectedProject.name.toUpperCase()}</h3>
           <h4 className="st-hero-subtitle">
-            Enterprise Sales Management Platform
+            {activeSelectedProject.subtitle || activeSelectedProject.title}
           </h4>
 
           <p className="st-hero-description">
-            An enterprise-oriented full-stack sales platform designed to manage leads, deals, sales, targets, users, permissions and organizational data from a centralized system.
+            {activeSelectedProject.description || activeSelectedProject.shortDescription}
           </p>
 
-          {/* Technology Chips: Java 21, Spring Boot, React, MySQL, JWT, RBAC */}
+          {/* Technology Chips - Specifically Highlighting Required Stack */}
           <div className="st-hero-tech-chips" aria-label="Project Technologies">
-            {[
-              'Java 21',
-              'Spring Boot',
-              'React',
-              'MySQL',
-              'JWT',
-              'RBAC',
-            ].map((tech) => (
-              <span key={tech} className="st-tech-chip interactive-badge">
-                {tech}
-              </span>
-            ))}
+            {activeSelectedProject.id === 'sales-tracker' ? (
+              [
+                'Spring Boot',
+                'React',
+                'MySQL',
+                'JWT Authentication',
+                'Dynamic RBAC',
+                'Lead → Deal → Sale workflow',
+                'REST APIs',
+                'Enterprise architecture',
+              ].map((tech) => (
+                <span key={tech} className="st-tech-chip interactive-badge highlighted">
+                  {tech}
+                </span>
+              ))
+            ) : (
+              activeSelectedProject.technologies.map((tech) => (
+                <span key={tech} className="st-tech-chip interactive-badge">
+                  {tech}
+                </span>
+              ))
+            )}
           </div>
+
+          {/* Key Engineering Features Highlight for Active Project */}
+          {activeSelectedProject.engineeringHighlights && (
+            <div className="st-project-key-features">
+              <span className="st-key-features-title">KEY ENGINEERING FEATURES:</span>
+              <div className="st-key-features-grid">
+                {activeSelectedProject.engineeringHighlights.map((feat, fIdx) => (
+                  <div key={fIdx} className="st-key-feature-item">
+                    <span className="feature-check-icon">✓</span>
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Action Buttons */}
           <div className="st-hero-actions">
-            <a
-              href="https://github.com/Omsingh1921/SalesTracker"
-              className="btn btn-primary st-action-btn"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="View SalesTracker Repository on GitHub"
-            >
-              <span>View GitHub</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </a>
+            {activeSelectedProject.githubUrl && (
+              <a
+                href={activeSelectedProject.githubUrl}
+                className="btn btn-primary st-action-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${activeSelectedProject.name} on GitHub`}
+              >
+                <span>View GitHub</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            )}
 
             <a
               href="#product-interface"
@@ -474,21 +525,23 @@ export default function Projects() {
               <span>View Product Interface</span>
             </a>
 
-            <button
-              type="button"
-              className="btn btn-outline st-action-btn"
-              onClick={() => {
-                setCaseStudyTab('overview')
-                setIsCaseStudyOpen(true)
-              }}
-              aria-label="Open Full Enterprise Case Study"
-            >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-              </svg>
-              <span>Case Study Details</span>
-            </button>
+            {activeSelectedProject.caseStudy && (
+              <button
+                type="button"
+                className="btn btn-outline st-action-btn"
+                onClick={() => {
+                  setCaseStudyTab('overview')
+                  setIsCaseStudyOpen(true)
+                }}
+                aria-label="Open Full Enterprise Case Study"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                </svg>
+                <span>Case Study Details</span>
+              </button>
+            )}
           </div>
         </ScrollReveal>
 
@@ -940,6 +993,17 @@ export default function Projects() {
                   <h4 className="secondary-title">{p.title}</h4>
                   <p className="secondary-desc">{p.description}</p>
 
+                  {p.engineeringHighlights && (
+                    <div className="secondary-highlights">
+                      {p.engineeringHighlights.map((feat, fIdx) => (
+                        <div key={fIdx} className="secondary-highlight-item">
+                          <span className="secondary-check-icon">✓</span>
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
                   <div className="secondary-tech-chips">
                     {p.technologies.map((tech) => (
                       <span key={tech} className="tech-chip">
@@ -991,6 +1055,28 @@ export default function Projects() {
                   <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
+            </div>
+            {/* Interactive Tab Switcher in Fullscreen Mode */}
+            <div className="uml-zoom-tabs-bar">
+              {[
+                { id: 'architecture', label: 'Architecture' },
+                { id: 'datamodel', label: 'ER Schema' },
+                { id: 'authentication', label: 'JWT Flow' },
+                { id: 'workflow', label: 'Sales Lifecycle' },
+                { id: 'authorization', label: 'RBAC' },
+                { id: 'datascope', label: 'Data Scope' },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeDeepDiveTab === tab.id}
+                  className={`st-tab-button ${activeDeepDiveTab === tab.id ? 'active' : ''}`}
+                  onClick={() => setActiveDeepDiveTab(tab.id)}
+                >
+                  <span>{tab.label}</span>
+                </button>
+              ))}
             </div>
             <div className="uml-zoom-body">
               {renderDeepDiveContent()}

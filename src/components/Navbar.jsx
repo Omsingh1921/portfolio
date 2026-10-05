@@ -13,7 +13,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
 
-      const sectionIds = ['home', 'about', 'skills', 'projects', 'experience', 'contact']
+      const sectionIds = ['home', 'about', 'ecosystem', 'skills', 'projects', 'experience', 'contact']
       const scrollYOffset = window.scrollY + 140
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
